@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,4 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-route::get('/home',[HomeController::class,'index']);
+route::get('/home',[HomeController::class,'index'])->name('home');
+route::get('/login',[LoginController::class,'halamanLogin'])->name('login');
+route::post('/postLogin',[LoginController::class,'postLogin'])->name('postLogin');
+route::post('/logout',[LoginController::class,'logout'])->name('logout');

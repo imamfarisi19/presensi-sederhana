@@ -49,7 +49,7 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fa fa-address-book"></i>
               <p>
                 Laporan
                 <i class="right fas fa-angle-left"></i>
@@ -58,19 +58,24 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fa fa-user nav-icon"></i>
                   <p>Presensi Per karyawan</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fa fa-users nav-icon"></i>
                   <p>Presensi Keseluruhan</p>
                 </a>
               </li>
             </ul>
           </li>
-
+          <li class="nav-item">
+            <a href="{{ route('logout') }}" class="nav-link">
+              <i class="fas fa-th nav-icon"></i>
+               <p>Logout</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
