@@ -24,4 +24,7 @@ class LoginController extends Controller
         return redirect('/');
     }
     
+    public function registrasi(){
+        return view('Login.registrasi');
+    }
 }
