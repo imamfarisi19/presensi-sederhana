@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 
 route::get('/registrasi',[LoginController::class,'registrasi'])->name('registrasi');
-route::get('/simpanregistrasi',[LoginController::class,'simpanregistrasi'])->name('simpanregistrasi');
+route::post('/simpanregistrasi',[LoginController::class,'simpanregistrasi'])->name('simpanregistrasi');
 route::get('/login',[LoginController::class,'halamanLogin'])->name('login');
 route::post('/postLogin',[LoginController::class,'postLogin'])->name('postLogin');
 route::get('/logout',[LoginController::class,'logout'])->name('logout');

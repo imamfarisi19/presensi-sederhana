@@ -25,6 +25,6 @@ class UserSeeder extends Seeder
             'password' => bcrypt('12345'),
             'remember_token' => Str::random(60),
         ]);
-        //
+        return view('welcome');
     }
 }
