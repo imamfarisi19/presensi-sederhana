@@ -27,4 +27,9 @@ class LoginController extends Controller
     public function registrasi(){
         return view('Login.registrasi');
     }
+
+    public function simpanregistrasi(Request $request){
+        dd($request->all());
+
+    }
 }
