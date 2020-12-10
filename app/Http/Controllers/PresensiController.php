@@ -53,6 +53,7 @@ class PresensiController extends Controller
                 'user_id' => auth()->user()->id,
                 'tgl' => $tanggal,
                 'jammasuk' => $localtime,
+                'jamkeluar' => $localtime,
             ]);
         }
 
