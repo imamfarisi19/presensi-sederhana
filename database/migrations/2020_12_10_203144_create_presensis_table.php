@@ -14,7 +14,7 @@ class CreatePresensisTable extends Migration
      */
     public function up()
     {
-        Schema::create('presensis', function (Blueprint $table) {
+        Schema::create('presensi', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
             $table->date('tgl');
@@ -32,6 +32,6 @@ class CreatePresensisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('presensis');
+        Schema::dropIfExists('presensi');
     }
 }

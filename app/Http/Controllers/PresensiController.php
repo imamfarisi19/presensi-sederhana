@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Presensi;
+use DateTime;
+use DateTimeZone;
 use Illuminate\Http\Request;
 
 class PresensiController extends Controller
@@ -34,7 +37,27 @@ class PresensiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $timezone = 'Asia/Makassar';
+        $date = new DateTime('now',new DateTimeZone($timezone));
+        $tanggal = $date->format('Y-m-d');
+        $location = $date->format('H:i:s');
+
+        $presensi = Presensi::where([
+            ['user_id','=',auth()->user()->id],
+            ['tgl','=',$tanggal],
+        ])->first();
+        if ($presensi){
+            dd("sudah ada");
+        }else{
+            Presensi::created([
+                'user_id' => auth()->user()->id,
+                'tgl' => $tanggal,
+                'jammasuk' => $location,
+            ]);
+        }
+
+
+        return redirect('presensi-masuk');
     }
 
     /**
