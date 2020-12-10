@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PresensiController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,5 +28,8 @@ route::post('/postLogin',[LoginController::class,'postLogin'])->name('postLogin'
 route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth','ceklevel:admin,karyawan']], function(){
-    route::get('/home',[HomeController::class,'index'])->name('home');    
+    route::get('/home',[HomeController::class,'index'])->name('home');
+});
+Route::group(['middleware' => ['auth','ceklevel:karyawan']], function(){
+    route::get('/presensi-masuk',[PresensiController::class,'index'])->name('presensi-masuk');
 });
