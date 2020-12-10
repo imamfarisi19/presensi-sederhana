@@ -31,5 +31,6 @@ Route::group(['middleware' => ['auth','ceklevel:admin,karyawan']], function(){
     route::get('/home',[HomeController::class,'index'])->name('home');
 });
 Route::group(['middleware' => ['auth','ceklevel:karyawan']], function(){
+    route::post('/simpan-masuk',[PresensiController::class,'store'])->name('simpan-masuk');
     route::get('/presensi-masuk',[PresensiController::class,'index'])->name('presensi-masuk');
 });

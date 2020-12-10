@@ -1,5 +1,5 @@
 function getServerTime() {
-    return $.ajax({ async: false }).getAllResponseHeaders('Date');
+    return $.ajax({ async: false }).getResponseHeaders('Date');
 }
 
 function realtimeClock() {

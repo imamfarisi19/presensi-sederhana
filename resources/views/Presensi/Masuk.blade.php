@@ -68,7 +68,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	        <div class="card card-info card-outline">
 		        <div class="card-header">Presensi Masuk</div>
 		        <div class="card-body">
-	    	        	<form action="#" method="post">
+	    	        	<form action="{{ route('simpan-masuk') }}" method="post">
     			        {{ csrf_field() }}
 			        <div class="form-group">
 				        <center>
