@@ -49,12 +49,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Halaman Untuk Presensi Masuk</h1>
+            <h1 class="m-0 text-dark">Halaman Untuk Presensi Keluar</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Presensi Masuk</li>
+              <li class="breadcrumb-item active">Presensi Keluar</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -68,7 +68,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	        <div class="card card-info card-outline">
 		        <div class="card-header">Presensi Keluar</div>
 		        <div class="card-body">
-	    	        	<form action="#" method="post">
+	    	        	<form action="{{ route('ubah-presensi') }}" method="post">
     			        {{ csrf_field() }}
 			        <div class="form-group">
 				        <center>

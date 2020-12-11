@@ -86,13 +86,31 @@ class PresensiController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
+    public function presensipulang(){
+	    $timezone = 'Asia/Makassar';
+	    $date = new DateTime('now', new DateTimeZone($timezone));
+	    $tanggal = $date->format('Y-m-d');
+	    $localtime = $date->format('H:i:s');
+	
+	    $presensi = Presensi::where([
+		    ['user_id','=',auth()->user()->id],
+		    ['tgl','=',$tanggal],
+	    ])->first();
+	    //dd(date('H:i:s', strtotime($localtime) - strtotime($presensi->jammasuk)));
+	    $dt=[
+		    'jamkeluar' => $localtime,
+		    'jamkerja' => date('H:i:s', strtotime($localtime) - strtotime($presensi->jammasuk))
+	    ];
+	
+	    if($presensi->jamkeluar == ""){
+		    $presensi->update($dt);
+		    return redirect('presensi-keluar');
+	    }else{
+		    dd("sudah ada");
+	    }
+    }
+    
     public function update(Request $request, $id)
     {
         //
