@@ -19,6 +19,10 @@ class PresensiController extends Controller
         return view('Presensi.Masuk');
     }
 
+    public function keluar()
+    {
+        return view('Presensi.Keluar');
+    }
     /**
      * Show the form for creating a new resource.
      *
