@@ -70,9 +70,9 @@ class PresensiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function halamanrekap($id)
     {
-        //
+        return view('Presensi.Halaman-rekap-karyawan');
     }
     
     public function tampildatakeseluruhan($tglawal, $tglakhir)
