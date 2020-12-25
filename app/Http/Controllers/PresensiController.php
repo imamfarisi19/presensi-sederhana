@@ -74,16 +74,11 @@ class PresensiController extends Controller
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    
+    public function tampildatakeseluruhan($tglawal, $tglakhir)
     {
-        //
+        $presensi = Presensi::with('user')->WhereBetween('tgl'.[$tglawal, $tglakhir])->orderBy('tgl','asc')->get();
+        return view('Presensi.Rekap-karyawan',compact('presensi'));
     }
 
     
