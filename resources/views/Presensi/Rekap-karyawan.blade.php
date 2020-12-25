@@ -62,6 +62,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                     </div>
 
+                    <div class="form-group">
+                        <table border="1">
+                            <tr>
+                                <th>Pegawai</th>
+                                <th>Tanggal</th>
+                                <th>Masuk</th>
+                                <th>Keluar</th>
+                                <th>Jumlah Jam Kerja</th>
+                            </tr>
+                            @foreach ($presensi as $item)
+                            <tr>
+                                <td>{{ $item->user->name}}</td>
+                                <td>{{ $item->tg}}</td>
+                                <td>{{ $item->jammasuk}}</td>
+                                <td>{{ $item->jamkeluar}}</td>
+                                <td>{{ $item->jamkerja}}</td>
+                            </tr>
+                            @endforeach
+                        </table>
+                    </div>
 		        </div>
 	        </div>
         </div>
