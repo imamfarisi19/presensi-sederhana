@@ -84,7 +84,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			    	    <div>
 				    	    <button type="submit" class="btn btn-primary">Klik Untuk Presensi Masuk</button>
 				        </div>
-			        </center>
+              </center>
+	    	        	</form>
 		        </div>
 	        </div>
         </div>

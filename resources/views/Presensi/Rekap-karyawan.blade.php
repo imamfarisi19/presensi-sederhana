@@ -8,31 +8,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <title>AdminLTE 3 | Starter</title>
     @include('Template.head');
-    <script src="{{ asset('Js/jam.js') }}"></script>
-    <style>
-	    #watch {
-		    color: rgb(252, 150, 65);
-    		position: absolute;
-		    z-index: 1;
-		    height: 40px;
-		    width: 700px;
-		    overflow: show;
-		    margin: auto;
-		    top: 0;
-    		left: 0;
-	    	bottom: 0;
-    		right: 0;
-		    font-size: 10vw;
-    		-webkit-text-stroke: 3px rgb(210, 65, 36);
-		    text-shadow: 4px 4px 10px rgba(210, 65, 36, 0.4),
-			    4px 4px 20px rgba(210, 45, 26, 0.4),
-			    4px 4px 30px rgba(210, 25, 16, 0.4),
-		    	4px 4px 40px rgba(210, 15, 06, 0.4);
-	    }
-    </style>
+    
 </head>
 
-<body class="hold-transition sidebar-mini" onload="realtimeClock()">
+<body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -49,12 +28,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Halaman Untuk Presensi Keluar</h1>
+            <h1 class="m-0 text-dark">Rekap Presensi Karyawan</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Presensi Keluar</li>
+              <li class="breadcrumb-item active">Rekap Presensi Karyawan</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -66,26 +45,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content">
         <div class="row justify-content-center">
 	        <div class="card card-info card-outline">
-		        <div class="card-header">Presensi Keluar</div>
+		        <div class="card-header">Lihat Data</div>
 		        <div class="card-body">
-	    	        	<form action="{{ route('ubah-presensi') }}" method="post">
-    			        {{ csrf_field() }}
-			        <div class="form-group">
-				        <center>
-                            <label id="clock" style="font-size: 100px; color: #659980; -webkit-text-stroke: 3px #02C39A;
-								    text-shadow: 4px 4px 10px #CDE481,
-								    4px 4px 20px rgba(210, 45, 26, 0.4),
-								    4px 4px 30px rgba(210, 25, 16, 0.4),
-							    	4px 4px 40px rgba(210, 15, 06, 0.4);">
-					        </label>
-    				    </center>
-	    		    </div>
-		    	    <center>
-			    	    <div>
-				    	    <button type="submit" class="btn btn-primary">Klik Untuk Presensi Keluar</button>
-				        </div>
-              </center>
-	    	        	</form>
+                    <div class="form-group">
+                        <label for="label">Tanggal Awal</label>
+                        <input type="date" name="tglawal" id="tglawal" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="label">Tanggal Akhir</label>
+                        <input type="date" name="tglakhir" id="tglakhir" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <a href="" onclick="this.href='/filter-data/'+ document.getElementById('tglawal').value + 
+                    '/' + document.getElementById('tglakhir').value " class="btn btn-primary col-md-12">
+                            Lihat <i class="fas fa-print"></i>
+                        </a>
+                    </div>
+
 		        </div>
 	        </div>
         </div>
