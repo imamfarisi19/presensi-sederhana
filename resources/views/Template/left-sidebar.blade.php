@@ -59,7 +59,7 @@
             <ul class="nav nav-treeview">
               @if (auth()->user()->level == "karyawan")
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('filter-data') }}" class="nav-link">
                   <i class="fa fa-user nav-icon"></i>
                   <p>Presensi Per karyawan</p>
                 </a>
