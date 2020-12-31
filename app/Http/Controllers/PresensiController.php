@@ -75,6 +75,7 @@ class PresensiController extends Controller
         return view('Presensi.Halaman-rekap-karyawan');
     }
     
+    
     public function tampildatakeseluruhan($tglawal, $tglakhir)
     {
         $presensi = Presensi::with('user')->WhereBetween('tgl'.[$tglawal, $tglakhir])->orderBy('tgl','asc')->get();
