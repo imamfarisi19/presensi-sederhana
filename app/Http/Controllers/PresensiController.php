@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Presensi;
 use DateTime;
 use DateTimeZone;
+use App\Models\Presensi;
 use Illuminate\Http\Request;
 
 class PresensiController extends Controller
@@ -23,6 +23,7 @@ class PresensiController extends Controller
     {
         return view('Presensi.Keluar');
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -41,8 +42,8 @@ class PresensiController extends Controller
      */
     public function store(Request $request)
     {
-        $timezone = 'Asia/Makassar';
-        $date = new DateTime('now',new DateTimeZone($timezone));
+        $timezone = 'Asia/Makassar'; 
+        $date = new DateTime('now', new DateTimeZone($timezone)); 
         $tanggal = $date->format('Y-m-d');
         $localtime = $date->format('H:i:s');
 
@@ -59,7 +60,7 @@ class PresensiController extends Controller
                 'jammasuk' => $localtime,
             ]);
         }
-
+         
 
         return redirect('presensi-masuk');
     }
@@ -70,43 +71,43 @@ class PresensiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function halamanrekap($id)
+    public function halamanrekap()
     {
         return view('Presensi.Halaman-rekap-karyawan');
     }
-    
-    
+
+   
     public function tampildatakeseluruhan($tglawal, $tglakhir)
     {
-        $presensi = Presensi::with('user')->WhereBetween('tgl'.[$tglawal, $tglakhir])->orderBy('tgl','asc')->get();
+        $presensi = Presensi::with('user')->whereBetween('tgl',[$tglawal, $tglakhir])->orderBy('tgl','asc')->get();
         return view('Presensi.Rekap-karyawan',compact('presensi'));
     }
 
-    
+   
     public function presensipulang(){
-	    $timezone = 'Asia/Makassar';
-	    $date = new DateTime('now', new DateTimeZone($timezone));
-	    $tanggal = $date->format('Y-m-d');
-	    $localtime = $date->format('H:i:s');
-	
-	    $presensi = Presensi::where([
-		    ['user_id','=',auth()->user()->id],
-		    ['tgl','=',$tanggal],
-	    ])->first();
-	    //dd(date('H:i:s', strtotime($localtime) - strtotime($presensi->jammasuk)));
-	    $dt=[
-		    'jamkeluar' => $localtime,
-		    'jamkerja' => date('H:i:s', strtotime($localtime) - strtotime($presensi->jammasuk))
-	    ];
-	
-	    if($presensi->jamkeluar == ""){
-		    $presensi->update($dt);
-		    return redirect('presensi-keluar');
-	    }else{
-		    dd("sudah ada");
-	    }
+        $timezone = 'Asia/Makassar'; 
+        $date = new DateTime('now', new DateTimeZone($timezone)); 
+        $tanggal = $date->format('Y-m-d');
+        $localtime = $date->format('H:i:s');
+
+        $presensi = Presensi::where([
+            ['user_id','=',auth()->user()->id],
+            ['tgl','=',$tanggal],
+        ])->first();
+        
+        $dt=[
+            'jamkeluar' => $localtime,
+            'jamkerja' => date('H:i:s', strtotime($localtime) - strtotime($presensi->jammasuk))
+        ];
+
+        if ($presensi->jamkeluar == ""){
+            $presensi->update($dt);
+            return redirect('presensi-keluar');
+        }else{
+            dd("sudah ada");
+        }
     }
-    
+
     public function update(Request $request, $id)
     {
         //
