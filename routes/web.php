@@ -23,12 +23,12 @@ Route::get('/', function () {
 
 route::get('/registrasi',[LoginController::class,'registrasi'])->name('registrasi');
 route::post('/simpanregistrasi',[LoginController::class,'simpanregistrasi'])->name('simpanregistrasi');
-route::get('/login',[LoginController::class,'halamanlogin'])->name('login');
-route::post('/postlogin',[LoginController::class,'postlogin'])->name('postlogin');
+route::get('/login',[LoginController::class,'halamanLogin'])->name('login');
+route::post('/postLogin',[LoginController::class,'postLogin'])->name('postLogin');
 route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
-Route::group(['middleware' => ['auth','ceklevel:admin,karyawan']], function () {
-    route::get('/home',[HomeController::class,'index'])->name('home');    
+Route::group(['middleware' => ['auth','ceklevel:admin,karyawan']], function(){
+    route::get('/home',[HomeController::class,'index'])->name('home');
 });
 
 Route::group(['middleware' => ['auth','ceklevel:karyawan']], function () {
